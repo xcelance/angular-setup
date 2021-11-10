@@ -1,0 +1,26 @@
+<div class="login-page">
+	<h3>Login</h3>
+	<form [formGroup]="form" (submit)="submitForm($event)">
+		<div class="row">
+			<div class="col-sm-12">
+				<div [ngClass]="{'has-error': form.controls.email.errors && form.controls.email.dirty, 'has-success': form.controls.email.valid && form.controls.email.dirty }">
+					<label for="password">E-mail</label>
+			      	<input class="form-control" type="email" name="email" formControlName="email" placeholder="E-mail" />
+			      	<!-- Validation -->
+			        <small *ngIf="form.controls.email.errors?.required && form.controls.email.dirty" class="text-danger">This field is required.</small>
+			    </div>
+			</div>
+			<div class="col-sm-12 mt-2">
+				<div [ngClass]="{'has-error': form.controls.password.errors && form.controls.password.dirty, 'has-success': form.controls.password.valid && form.controls.password.dirty }">
+					<label for="password">Password</label>
+			      	<input class="form-control" type="password" name="password" formControlName="password" placeholder="Password" />
+			      	<!-- Validation -->
+			        <small *ngIf="form.controls.password.errors?.required && form.controls.password.dirty" class="text-danger">This field is required.</small>
+			    </div>
+			</div>
+			<div class="col-sm-12 submit-btn mt-2">
+				<button [disabled]="!form.valid || processing" type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		</div>
+	</form>
+</div>
